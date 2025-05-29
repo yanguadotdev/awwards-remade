@@ -11,6 +11,7 @@ main.addEventListener('scroll', () => {
   animateVideo()
 })
 
+// Video Section
 const headerLeft = $('.text__header__left')
 const headerRight = $('.text__header__right')
 
@@ -26,3 +27,50 @@ function animateVideo() {
   headerLeft.style.transform = `translate(${-textTrans}px)`
   headerRight.style.transform = `translate(${textTrans}px)`
 }
+
+// Projects Section
+const projectsSticky = $('.projects__sticky')
+const projectsSlider = $('.projects__slider')
+
+let projectTargetX = 0
+let projectCurrentX = 0
+
+let percentages = {
+  small: 700,
+  medium: 360,
+  large: 100
+}
+
+let limit =
+  window.innerWidth <= 600
+    ? percentages.small
+    : window.innerWidth <= 1100
+    ? percentages.medium
+    : percentages.large
+
+function setLimits() {
+  limit =
+    window.innerWidth <= 600
+      ? percentages.small
+      : window.innerWidth <= 1100
+      ? percentages.medium
+      : percentages.large
+}
+
+window.addEventListener('resize', setLimits)
+
+function animateProjects() {
+  let offsetTop = projectsSticky.parentElement.offsetTop
+  let percentage = ((main.scrollTop - offsetTop) / window.innerHeight) * 100
+  percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage
+  projectTargetX = percentage
+  projectCurrentX = lerp(projectCurrentX, projectTargetX, 0.1)
+  projectsSlider.style.transform = `translate3d(${-projectCurrentX}vw, 0, 0)`
+}
+
+function animate() {
+  animateProjects()
+  requestAnimationFrame(animate)
+}
+
+animate()

@@ -251,3 +251,17 @@ section {
   padding-top: .5rem;
   font-size: .875rem;
 }
+
+@media only screen and (width < 600px) {
+  #projects {
+    height: 800%;
+  }
+
+  .projects__sticky {
+    height: 12.5%;
+  }
+
+  .project {
+    width: 100vw;
+  }
+}
