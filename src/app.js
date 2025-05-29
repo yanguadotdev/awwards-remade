@@ -1,8 +1,11 @@
 import { lerp, $ } from './utils.js'
+import { createProjects } from './projects.js'
 
 const main = $('main')
 const video = $('video')
 const videoSection = $('#video')
+
+createProjects()
 
 main.addEventListener('scroll', () => {
   animateVideo()
