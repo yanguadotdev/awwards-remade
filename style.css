@@ -252,6 +252,61 @@ section {
   font-size: .875rem;
 }
 
+
+/* Blog */
+#blog {
+  height: 400%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog__hero,
+.blog__post {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  max-width: var(--max-width);
+  overflow: hidden;
+}
+
+.text__reveal {
+  overflow: hidden;
+  font-size: clamp(2rem, 20cqi, 20rem);
+}
+
+.post {
+  position: relative;
+  width: 50%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  will-change: transform;
+  border-radius: .25rem;
+}
+
+.post__image__container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.blog__post__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: cover;
+}
+
+
+/* Media Queris */
 @media only screen and (width < 600px) {
   #projects {
     height: 800%;
