@@ -10,13 +10,15 @@
   --max-width: 1440px;
 }
 
-html {
+html, body {
   background-color: #000;
+  overscroll-behavior: none;
+  width: 100%;
+  height: 100%;
+  color: white
 }
 
 body {
-  overscroll-behavior: none;
-  color: white;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
@@ -25,11 +27,11 @@ body {
 .line__container {
   position: fixed;
   top: 0;
-  width: 100%;
   left: 50%;
   transform: translateX(-50%);
   max-width: var(--max-width);
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -53,15 +55,25 @@ body {
 }
 
 main {
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  overflow: scroll;
+}
+
+.scroll__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 section {
   width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
@@ -71,12 +83,12 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: min-content;
+  height: 100%;
+  width: 100%;
 }
 
 .hero__container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   max-width: var(--max-width);
   display: flex;
@@ -94,6 +106,7 @@ section {
   font-size: clamp(2rem, 20cqi, 20rem);
   letter-spacing: -.05em;
   margin-bottom: 2rem;
+  overflow: hidden;
 }
 
 
@@ -127,14 +140,14 @@ section {
 #video {
   display: flex;
   justify-content: center;
-  min-height: 200vh;
+  height: 200%
 }
 
 .video__sticky {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 50%;
 }
 
 video {
