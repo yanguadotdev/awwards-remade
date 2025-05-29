@@ -53,7 +53,7 @@ const projects = [
   {
     name: 'PROJECT 8',
     type: 'TYPE DESIGN',
-    pos: 'end',
+    pos: 'mid',
     image:
       'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&q=80&w=2574&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
