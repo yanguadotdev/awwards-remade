@@ -276,8 +276,16 @@ section {
 }
 
 .text__reveal {
+  line-height: 1;
   overflow: hidden;
   font-size: clamp(2rem, 20cqi, 20rem);
+}
+
+.text__reveal span {
+  transform: translateY(120%);
+  transition: .5s;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .post {
@@ -404,7 +412,47 @@ section {
 }
 
 
+/* Footer */
+#footer {
+  height: 50%;
+  background-color: white;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__container {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.footer__container .text__reveal span {
+  color: #000;
+}
+
+
 /* Media Queris */
+@media only screen and (width < 1100px) {
+
+  #projects {
+    height: 400%;
+  }
+
+  .projects__sticky {
+    height: 25%;
+  }
+
+  .project {
+    width: 50vw;
+  }
+}
+
+
 @media only screen and (width < 600px) {
   #projects {
     height: 800%;

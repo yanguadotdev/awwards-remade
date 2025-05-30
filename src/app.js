@@ -66,7 +66,6 @@ function animateProjects() {
   // Only animate if it is within the viewport
   if (rect.bottom < 0 || rect.top > window.innerHeight) return
 
-
   let offsetTop = projectsSticky.parentElement.offsetTop
   let percentage = ((main.scrollTop - offsetTop) / window.innerHeight) * 100
   percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage
@@ -113,13 +112,43 @@ const leftText = $('.text__left')
 const rightText = $('.text__right')
 
 function scrollDiscover() {
-  let {bottom} = discoverContainer.getBoundingClientRect()
+  let { bottom } = discoverContainer.getBoundingClientRect()
   let textTrans = bottom - window.innerHeight
   textTrans = textTrans < 0 ? 0 : textTrans
   leftText.style.transform = `translateX(${-textTrans}px)`
   rightText.style.transform = `translateX(${textTrans}px)`
 }
 
+// Text Reveal Animation
+const textReveals = [...$$('.text__reveal')]
+
+let callback = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      ;[...entry.target.querySelectorAll('span')].forEach((span, idx) => {
+        setTimeout(() => {
+          span.style.transform = 'translateY(0)'
+        }, (idx + 1) * 50)
+      })
+    }
+  })
+}
+
+let options = {
+  rootMargin: '0px',
+  threshold: 1.0
+}
+
+let observer = new IntersectionObserver(callback, options)
+textReveals.forEach((text) => {
+  let string = text.innerText
+  let html = ''
+  for (let i = 0; i < string.length; i++) {
+    html += `<span>${string[i]}</span>`
+  }
+  text.innerHTML = html
+  observer.observe(text)
+})
 
 function animate() {
   animateProjects()
