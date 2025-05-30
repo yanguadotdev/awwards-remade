@@ -61,6 +61,12 @@ function setLimits() {
 window.addEventListener('resize', setLimits)
 
 function animateProjects() {
+  const rect = projectsSticky.getBoundingClientRect()
+
+  // Only animate if it is within the viewport
+  if (rect.bottom < 0 || rect.top > window.innerHeight) return
+
+
   let offsetTop = projectsSticky.parentElement.offsetTop
   let percentage = ((main.scrollTop - offsetTop) / window.innerHeight) * 100
   percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage
