@@ -375,7 +375,32 @@ section {
 .discover__container p {
   color: #000;
   will-change: transform;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+}
+
+
+/* End Video */
+#end__video {
+  position: relative;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  object-fit: cover;
+}
+
+.end__video__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.end__video {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 
