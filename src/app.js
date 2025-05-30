@@ -107,6 +107,20 @@ function scrollCircle() {
   }
 }
 
+// Discover Text Animation
+const discoverContainer = $('.discover__container')
+const leftText = $('.text__left')
+const rightText = $('.text__right')
+
+function scrollDiscover() {
+  let {bottom} = discoverContainer.getBoundingClientRect()
+  let textTrans = bottom - window.innerHeight
+  textTrans = textTrans < 0 ? 0 : textTrans
+  leftText.style.transform = `translateX(${-textTrans}px)`
+  rightText.style.transform = `translateX(${textTrans}px)`
+}
+
+
 function animate() {
   animateProjects()
   requestAnimationFrame(animate)
@@ -115,6 +129,7 @@ function animate() {
 main.addEventListener('scroll', () => {
   scrollBlogPosts()
   scrollCircle()
+  scrollDiscover()
 })
 
 animate()

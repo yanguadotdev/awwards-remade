@@ -357,6 +357,27 @@ section {
   z-index: 1;
 }
 
+/* Discover */
+#discover {
+  background-color: white;
+  height: 100%;
+}
+
+.discover__container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.discover__container p {
+  color: #000;
+  will-change: transform;
+  font-size: 1.4rem;
+}
+
 
 /* Media Queris */
 @media only screen and (width < 600px) {
