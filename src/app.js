@@ -1,4 +1,4 @@
-import { lerp, $ } from './utils.js'
+import { lerp, $, $$ } from './utils.js'
 import { createProjects, createBlogposts } from './projects.js'
 
 const main = $('main')
@@ -69,9 +69,26 @@ function animateProjects() {
   projectsSlider.style.transform = `translate3d(${-projectCurrentX}vw, 0, 0)`
 }
 
+// Section Post Animation
+const blogSection = $('#blog')
+const blogPosts = [...$$('.post')]
+
+function scrollBlogPosts() {
+  let blogSectionTop = blogSection.getBoundingClientRect().top
+  for (let i = 0; i < blogPosts.length; i++) {
+    if (blogPosts[i].parentElement.getBoundingClientRect().top <= 1) {
+      let offset = (blogSectionTop + (window.innerHeight * (i + 1))) * 0.0005
+      offset = offset < -1 ? -1 : offset >= 0 ? 0 : offset
+      blogPosts[i].style.transform = `scale(${1 + offset})`
+    }
+  }
+}
+
 function animate() {
   animateProjects()
   requestAnimationFrame(animate)
 }
+
+main.addEventListener('scroll', scrollBlogPosts)
 
 animate()
